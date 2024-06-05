@@ -6,23 +6,32 @@
 ### Main Technologies
 HTML, CSS, JavaScript, Python+Flask, PostgreSQL OR MongoDB
 
-## Additional libraries and external APIs
+### Mandatory Requirements
+    A project violating any of these requirements will FAIL
+    
+    - Data handling: Build a Relational OR Non-Relational Database backed Flask project for a web application that allows users to store and manipulate data records about a particular domain.
+    - Database structure: Put some effort into designing a database structure well-suited for your domain. Make sure to put some thought into the relationships between records of different entities.
+    - User functionality: Create functionality for users to create, locate, display, edit and delete records (CRUD functionality).
+    - Use of technologies: Use HTML and custom CSS for the website's front-end.
+    - Structure: Incorporate a main navigation menu and structured layout (you might want to use Materialize or Bootstrap to accomplish this).
+    - Documentation: Write a README.md file for your project that explains what the project does and the value that it provides to its users.
+    - Version control: Use Git & GitHub for version control.
+    - Attribution: Maintain clear separation between code written by you and code from external sources (e.g. libraries or tutorials). Attribute any code from external sources to its source via comments above the code and (for larger dependencies) in the README.
+    - Deployment: Deploy the final version of your code to a hosting platform such as Heroku.
+    - Make sure to not include any passwords or secret keys in the project repository.
 
 # Welcome
 Welcome to my "Level 5 Diploma in Web Application Development" Code Institute Backend Development Milestone Project Project 3.
-
-## Overview
-The Kawaii Memory Game is a fun and engaging way to test your memory skills. This interactive web application challenges players to match pairs of adorable, themed cards. Designed with vibrant colors and a simple user interface, the game is suitable for all ages. It's built with HTML, CSS, and JavaScript, ensuring a responsive and accessible gaming experience on both desktop and mobile devices.
 
 ## Book Review and Recommendation Website
 This project is a book review and recommendation website built with Flask and a relational/non-relational database. Users can create, edit, and delete book entries, write and upvote reviews, and discover new books to read.
 
 ## Project Goals
-Develop a CRUD (Create, Read, Update, Delete) application for book data.
-Implement user interaction for adding, editing, and reviewing books.
-Design a user-friendly interface with search and filtering capabilities.
-Utilize a database to store and manage book information and reviews.
-Deploy the application to a hosting platform like Heroku.
+- Develop a CRUD (Create, Read, Update, Delete) application for book data.
+- Implement user interaction for adding, editing, and reviewing books.
+- Design a user-friendly interface with search and filtering capabilities.
+- Utilize a database to store and manage book information and reviews.
+- Deploy the application to a hosting platform like Heroku.
 
 ## Project Features:
 
@@ -53,22 +62,22 @@ Explore integrating with external book APIs (e.g., Goodreads) to enrich book dat
 Implement basic search functionality for users to easily find books.
 
 ## Technologies
-Frontend: HTML, CSS (Bootstrap/Materialize - optional)
-Backend: Python + Flask
-Database: PostgreSQL/MongoDB (to be decided)
-Additional Libraries:
-Flask-SQLAlchemy (or equivalent for chosen database)
-WTForms (maybe)
-Flask-Login (optional: for user authentication)
+- Frontend: HTML, CSS (Bootstrap/Materialize - optional)
+- Backend: Python + Flask
+- Database: PostgreSQL/MongoDB (to be decided)
+### Additional libraries and external APIs:
+- Flask-SQLAlchemy (or equivalent for chosen database)
+- WTForms (maybe)
+- Flask-Login (optional: for user authentication)
 
 ## Project Structure (file layout)
-app.py: Main Flask application file.
-templates: Directory containing HTML templates for different website pages.
-static: Directory for static files like CSS and JavaScript.
-models.py: Python file defining database models (Books, Reviews, etc.)
-forms.py: Python file defining user input forms (add/edit book, write review).
-README.md: This file (currently editing and updating as I go).
-requirements.txt: Text file listing project dependencies.
+- app.py: Main Flask application file.
+- templates: Directory containing HTML templates for different website pages.
+- static: Directory for static files like CSS and JavaScript.
+- models.py: Python file defining database models (Books, Reviews, etc.)
+- forms.py: Python file defining user input forms (add/edit book, write review).
+- README.md: This file (currently editing and updating as I go).
+- requirements.txt: Text file listing project dependencies.
 ...(other folders/files as needed)
 ### Current Progress (Update as you go)
 Briefly describe the current state of the project. What functionalities are implemented?
@@ -86,16 +95,17 @@ The application is deployed on Heroku (or other platform, specify URL).
 Instructions on accessing the deployed application (if applicable).
 
 ## Attribution
-Adobe, for the color wheel. #2D3540 #0B8C38 #20733D #5DBF4E #F2F2F2
-Pictures https://www.shutterstock.com/
-Favicon - https://www.shutterstock.com/
-Fonts - https://fonts.googleapis.com/
-Stylesheets and icons - https://kit.fontawesome.com
-Code usage lookups - https://www.w3schools.com/
-Media (images and animations)
-All them pictures have got to come from somewhere afterall:
-Pictures / Photos from https://stock.adobe.com/
-Favicon - https://icons8.com/
+- https://www.markdownguide.org/cheat-sheet/
+- Adobe, for the color wheel. #2D3540 #0B8C38 #20733D #5DBF4E #F2F2F2
+- Pictures https://www.shutterstock.com/
+- Favicon - https://www.shutterstock.com/
+- Fonts - https://fonts.googleapis.com/
+- Stylesheets and icons - https://kit.fontawesome.com
+- Code usage lookups - https://www.w3schools.com/
+### Media (images and animations)
+    All them pictures have got to come from somewhere afterall:
+- Pictures / Photos from https://stock.adobe.com/
+- Favicon - https://icons8.com/
 
 ## Release History
 
