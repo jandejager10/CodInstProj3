@@ -1,1 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Book Reviews & Recommendations">
+    <meta name="keywords" content="Book, Books, Review">
+    <meta content='Find and read more books than you can shake a stick at'>
+    <meta name="author" content="Jan de Jager">
+    <title>Book Reviews & Recommendations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap" rel="stylesheet">
+    <!-- Font Awseome link -->
+    <script rel="preload stylesheet" src=https://kit.fontawesome.com/919d7ae42a.js crossorigin="anonymous"></script>
+    
+</head>
+<body>
+  <header>
+    <h1>Book Reviews & Recommendations</h1>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="{{ url_for('home') }}">Home</a></li>
+      <li><a href="{{ url_for('books') }}">Browse Books</a></li>
+      </ul>
+  </nav>
+  <main>
+    {% block content %}
 
+    {% endblock %}
+  </main>
+  <footer>
+    <p>&copy; {{ year }} Book Reviews & Recommendations</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
