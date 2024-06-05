@@ -8,7 +8,7 @@
     <meta content='Find and read more books than you can shake a stick at'>
     <meta name="author" content="Jan de Jager">
     <title>Book Reviews & Recommendations</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='static/css/materialize.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='static/css/materialize.min.css') }}" type="text/css" media="screen,projection">
     <!-- Materialize -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize-css/10.0.4/css/materialize.min.css">
     <!-- Google Fonts -->
@@ -38,6 +38,7 @@
     <p>&copy; {{ year }} Book Reviews & Recommendations</p>
   </footer>
 
+  <!--JavaScript - might have to remove the script.js file -->
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize-css/10.0.4/js/materialize.min.js"></script>
 </body>
