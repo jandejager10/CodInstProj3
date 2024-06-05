@@ -66,7 +66,6 @@ Implement basic search functionality for users to easily find books.
 - Backend: Python + Flask
 - Database: PostgreSQL/MongoDB (to be decided)
 ### Additional libraries and external APIs:
-- Flask-SQLAlchemy (or equivalent for chosen database)
 - WTForms (maybe)
 - Flask-Login (optional: for user authentication)
 
@@ -78,6 +77,10 @@ Implement basic search functionality for users to easily find books.
 - forms.py: Python file defining user input forms (add/edit book, write review).
 - README.md: This file (currently editing and updating as I go).
 - requirements.txt: Text file listing project dependencies.
+- data/company.json: will define the database models
+- templates/base.html: the base html file
+- templates/books.html:  for browsing books
+- templates/add_book.html: for adding new books and more
 ...(other folders/files as needed)
 ### Current Progress (Update as you go)
 Briefly describe the current state of the project. What functionalities are implemented?
@@ -102,6 +105,7 @@ Instructions on accessing the deployed application (if applicable).
 - Fonts - https://fonts.googleapis.com/
 - Stylesheets and icons - https://kit.fontawesome.com
 - Code usage lookups - https://www.w3schools.com/
+- Forms template - https://wtforms.readthedocs.io/en/3.1.x/
 ### Media (images and animations)
     All them pictures have got to come from somewhere afterall:
 - Pictures / Photos from https://stock.adobe.com/
