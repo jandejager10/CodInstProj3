@@ -62,12 +62,12 @@ Explore integrating with external book APIs (e.g., Goodreads) to enrich book dat
 Implement basic search functionality for users to easily find books.
 
 ## Technologies
-- Frontend: HTML, CSS (Bootstrap/Materialize - optional)
+- Frontend: HTML, CSS (Bootstrap + Materialize)
 - Backend: Python + Flask
-- Database: PostgreSQL/MongoDB (to be decided)
+- Database: PostgreSQL hosted on [neon.tech](https://console.neon.tech/)
 ### Additional libraries and external APIs:
-- WTForms (maybe)
-- Flask-Login (optional: for user authentication)
+- WTForms where required or usefull
+- Flask-Login (for user authentication)
 
 ## Project Structure (file layout)
 - app.py: Main Flask application file.
