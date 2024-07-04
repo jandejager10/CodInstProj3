@@ -8,8 +8,9 @@
     <meta content='Find and read more books than you can shake a stick at'>
     <meta name="author" content="Jan de Jager">
     <title>Book Reviews & Recommendations</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='static/css/materialize.min.css') }}" type="text/css" media="screen,projection">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Materialize -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='static/css/materialize.min.css') }}" type="text/css" media="screen,projection">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize-css/10.0.4/css/materialize.min.css">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,22 +22,49 @@
 </head>
 <body>
   <header>
-    <h1>Book Reviews & Recommendations</h1>
+    <div class="container">
+      <h1>Book Reviews & Recommendations</h1>
+    </div>
   </header>
-  <nav>
-    <ul>
-      <li><a href="{{ url_for('home') }}">Home</a></li>
-      <li><a href="{{ url_for('books') }}">Browse Books</a></li>
-      </ul>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="{{ url_for('home') }}">Book Review</a>
+      <div class="collapse navbar-collapse">
+          <ul class="navbar-nav mr-auto">
+              <li class="nav-item"><a class="nav-link" href="{{ url_for('books') }}">Books</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{ url_for('add_book') }}">Add Book</a></li>
+          </ul>
+          {% if current_user.is_authenticated %}
+              <ul class="navbar-nav ml-auto">
+                  <li class="nav-item"><a class="nav-link" href="{{ url_for('logout') }}">Logout</a></li>
+              </ul>
+          {% else %}
+              <ul class="navbar-nav ml-auto">
+                  <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}">Login</a></li>
+                  <li class="nav-item"><a class="nav-link" href="{{ url_for('register') }}">Register</a></li>
+              </ul>
+          {% endif %}
+      </div>
   </nav>
+  <div class="container">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+              {% for category, message in messages %}
+                  <div class="alert alert-{{ category }}">{{ message }}</div>
+              {% endfor %}
+          {% endif %}
+      {% endwith %}
+      {% block content %}{% endblock %}
+  </div>
+  <hr>
   <main>
     {% block content %}
 
     {% endblock %}
   </main>
-  <footer>
-    <p>&copy; {{ year }} Book Reviews & Recommendations</p>
-  </footer>
+  <footer class="footer">
+      <p>&copy; {{ year }} Book Reviews & Recommendations</p>
+
+
 
   <!--JavaScript - might have to remove the script.js file -->
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
