@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h2 class="center-align">{{ book.title }}</h2>
+    <div class="row">
+        <div class="col s12 m6">
+            <img src="{{ book.cover_image_url }}" alt="{{ book.title }}" class="responsive-img">
+        </div>
+        <div class="col s12 m6">
+            <p><strong>Author:</strong> {{ book.author }}</p>
+            <p><strong>Genre:</strong> {{ book.genre }}</p>
+            <p><strong>Publication Date:</strong> {{ book.publication_date }}</p>
+            <p><strong>ISBN:</strong> {{ book.isbn }}</p>
+        </div>
+    </div>
+    <h4>Reviews</h4>
+    {% for review in reviews %}
+    <div class="card">
+        <div class="card-content">
+            <p>{{ review.content }}</p>
+        </div>
+        <div class="card-action">
+            <span>Upvotes: {{ review.upvotes }}</span>
+        </div>
+    </div>
+    {% endfor %}
+    {% if current_user.is_authenticated %}
+    <h5>Add a Review</h5>
+    <form method="POST" action="{{ url_for('book_detail', book_id=book.id) }}">
+        {{ form.hidden_tag() }}
+        <div class="input-field">
+            {{ form.content.label }}
+            {{ form.content(class="materialize-textarea") }}
+            {% for error in form.content.errors %}
+                <span class="helper-text red-text">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <button type="submit" class="btn waves-effect waves-light">Submit Review</button>
+    </form>
+    {% endif %}
+</div>
+{% endblock %}

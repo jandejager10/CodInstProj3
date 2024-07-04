@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h2 class="center-align">Edit Book</h2>
+    <form method="POST" action="{{ url_for('edit_book', book_id=book.id) }}">
+        {{ form.hidden_tag() }}
+        <div class="input-field">
+            {{ form.title.label }}
+            {{ form.title(class="validate") }}
+            {% for error in form.title.errors %}
+                <span class="helper-text red-text">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div class="input-field">
+            {{ form.author.label }}
+            {{ form.author(class="validate") }}
+            {% for error in form.author.errors %}
+                <span class="helper-text red-text">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div class="input-field">
+            {{ form.genre.label }}
+            {{ form.genre(class="validate") }}
+        </div>
+        <div class="input-field">
+            {{ form.publication_date.label }}
+            {{ form.publication_date(class="validate") }}
+        </div>
+        <div class="input-field">
+            {{ form.isbn.label }}
+            {{ form.isbn(class="validate") }}
+        </div>
+        <div class="input-field">
+            {{ form.cover_image_url.label }}
+            {{ form.cover_image_url(class="validate") }}
+        </div>
+        <button type="submit" class="btn waves-effect waves-light">Update Book</button>
+    </form>
+</div>
+{% endblock %}

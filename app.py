@@ -27,7 +27,7 @@ def load_user(user_id):
 # Routes
 @app.route('/')
 def home():
-    return render_template('base.html')
+    return render_template('index.html')
 
 @app.route('/books', methods=['GET', 'POST'])
 def books():
