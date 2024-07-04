@@ -167,6 +167,9 @@ Implement basic search functionality for users to easily find books.
 - Database layout/modeling - https://stackoverflow.com/questions/21159333/database-schema-for-books-authors-publishers-and-users-with-bookshelves
 - Login layout - https://www.goodreads.com/
 - Review layout ideas - https://www.goodreads.com/
+- Book search API - https://www.goodreads.com/api
+- Code for login - https://werkzeug.palletsprojects.com/en/3.0.x/
+- Code for login - https://pypi.org/project/Flask-Login/
 ### Media (images and animations)
     All them pictures have got to come from somewhere afterall:
 - Pictures / Photos from https://stock.adobe.com/
