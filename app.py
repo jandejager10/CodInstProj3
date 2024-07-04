@@ -3,21 +3,24 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager, UserMixin, login_user, current_user, logout_user, login_required
 from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import datetime
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:ESP!ngard1@localhost/codInstprojthree'
 app.config['SECRET_KEY'] = 'your_secret_key'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
-
-from models import *
-from forms import *
 
 # Initialize Login Manager
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
+
+# Import models after initializing db to avoid circular imports
+from models import User, Book, Review
+from forms import BookForm, ReviewForm, LoginForm, RegistrationForm
 
 # User loader callback function
 @login_manager.user_loader
@@ -89,18 +92,36 @@ def delete_book(book_id):
     flash('Book deleted successfully', 'success')
     return redirect(url_for('books'))
 
+@app.route('/add_book', methods=['GET', 'POST'])
+def add_book():
+    form = BookForm()
+    if form.validate_on_submit():
+        new_book = Book(
+            title=form.title.data,
+            author=form.author.data,
+            genre=form.genre.data,
+            publication_date=form.publication_date.data,
+            isbn=form.isbn.data,
+            cover_image_url=form.cover_image_url.data
+        )
+        db.session.add(new_book)
+        db.session.commit()
+        flash('Book added successfully', 'success')
+        return redirect(url_for('books'))
+    return render_template('add_book.html', form=form)
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('home'))
     form = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
+        user = User.query.filter_by(username=form.username.data).first()
         if user and check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember.data)
             return redirect(url_for('home'))
         else:
-            flash('Login Unsuccessful. Please check email and password', 'danger')
+            flash('Login Unsuccessful. Please check username and password', 'danger')
     return render_template('login.html', form=form)
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -109,7 +130,7 @@ def register():
         return redirect(url_for('home'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        hashed_password = generate_password_hash(form.password.data, method='sha256')
+        hashed_password = generate_password_hash(form.password.data, method='pbkdf2:sha256')
         new_user = User(username=form.username.data, email=form.email.data, password=hashed_password)
         db.session.add(new_user)
         db.session.commit()
