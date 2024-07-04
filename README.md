@@ -70,32 +70,90 @@ Implement basic search functionality for users to easily find books.
 - Flask-Login (for user authentication)
 
 ## Project Structure (file layout)
-- app.py: Main Flask application file.
-- templates: Directory containing HTML templates for different website pages.
-- static: Directory for static files like CSS and JavaScript.
-- models.py: Python file defining database models (Books, Reviews, etc.)
-- forms.py: Python file defining user input forms (add/edit book, write review).
-- README.md: This file (currently editing and updating as I go).
-- requirements.txt: Text file listing project dependencies.
-- data/company.json: will define the database models
-- templates/base.html: the base html file
-- templates/books.html:  for browsing books
-- templates/add_book.html: for adding new books and more
-...(other folders/files as needed)
-### Current Progress (Update as you go)
-Briefly describe the current state of the project. What functionalities are implemented?
-Mention any specific features you've completed or are currently working on.
-Note any challenges encountered and solutions implemented.
+- **Directories and Files:**
+    - `/static` for CSS, JavaScript, and images.
+    - `/templates` for HTML templates.
+    - `app.py` for the main Flask application logic.
+    - `models.py` for database model definitions.
+    - `forms.py` for defining forms with WTForms.
+    - `README.md` for project documentation.
+    - `requirements.txt` for listing project dependencies.
+    - `testing.md` for detailing the testing approach.
 
 
-## Example for what this should look like:
-CRUD functionality for books is complete (add, edit, delete book entries).
-User can write and edit reviews for existing books.
-Basic search functionality for books by title is implemented.
-Currently working on upvote functionality for reviews.
-Deployment (Update when deployed)
-The application is deployed on Heroku (or other platform, specify URL).
-Instructions on accessing the deployed application (if applicable).
+#### Database Models
+- **Models (`models.py`):**
+    - `User`: Stores user information.
+    - `Book`: Stores book information (title, author, genre, publication date, ISBN, cover image URL).
+    - `Review`: Stores reviews for books (content, upvotes, timestamps, user ID, book ID).
+
+#### Forms with WTForms
+- **Forms (`forms.py`):**
+    - `BookForm`: For adding and editing book entries.
+    - `ReviewForm`: For writing and editing reviews.
+
+#### CRUD Functionality
+- **Routes and View Functions:** Implement routes and logic for:
+    - Adding books
+    - Viewing book details
+    - Editing books
+    - Deleting books
+    - Adding and editing reviews
+
+#### User Authentication
+- **Flask-Login Setup:** Implement user login, registration, and logout functionalities for personalized user experience.
+
+#### HTML Templates
+- **Templates (`/templates`):**
+    - `base.html`: Base template for common structure.
+    - `books.html`: Display list of books.
+    - `add_book.html`: Form for adding new books.
+    - `book_detail.html`: Display individual book details and reviews.
+    - `edit_book.html`: Form for editing books.
+    - `login.html`: User login form.
+    - `register.html`: User registration form.
+
+#### Front-End Styling
+- **CSS Frameworks:** Use Bootstrap and Materialize for styling the web application. (might change at later stage)
+
+#### Testing
+- **Manual Testing:** See testing.md for interaction and overall user experience tests.
+
+#### Deployment
+- **Heroku Deployment:**
+    - `Procfile` for Heroku.
+    - Update `requirements.txt` with project dependencies.
+    - Deploy the application to Heroku and configure the database.
+        Database currently local for development but will be deployed either on neon.tech or code institute platform https://dbs.ci-dbs.net/
+
+### Fields Used
+
+#### User Model
+- `id`: Unique identifier for the user.
+- `username`: Username of the user.
+- `email`: Email address of the user.
+- `password`: Password of the user (hashed).
+- `reviews`: Relationship to associate user with reviews.
+
+#### Book Model
+- `id`: Unique identifier for the book.
+- `title`: Title of the book.
+- `author`: Author of the book.
+- `genre`: Genre of the book.
+- `publication_date`: Publication date of the book.
+- `isbn`: ISBN number of the book.
+- `cover_image_url`: URL of the book's cover image.
+- `reviews`: Relationship to associate book with reviews.
+
+#### Review Model
+- `id`: Unique identifier for the review.
+- `content`: Content of the review.
+- `upvotes`: Number of upvotes for the review.
+- `timestamp`: Time when the review was created.
+- `user_id`: ID of the user who wrote the review.
+- `book_id`: ID of the book being reviewed.
+
+
 
 ## Attribution
 - https://www.markdownguide.org/cheat-sheet/
@@ -106,19 +164,16 @@ Instructions on accessing the deployed application (if applicable).
 - Stylesheets and icons - https://kit.fontawesome.com
 - Code usage lookups - https://www.w3schools.com/
 - Forms template - https://wtforms.readthedocs.io/en/3.1.x/
+- Database layout/modeling - https://stackoverflow.com/questions/21159333/database-schema-for-books-authors-publishers-and-users-with-bookshelves
+- Login layout - https://www.goodreads.com/
+- Review layout ideas - https://www.goodreads.com/
 ### Media (images and animations)
     All them pictures have got to come from somewhere afterall:
 - Pictures / Photos from https://stock.adobe.com/
 - Favicon - https://icons8.com/
 
-## Release History
-
-## Next Steps
-Outline your plans for further development of the project.
-Mention any additional features you plan to implement.
-Contributing (Optional)
-Include instructions for contributing to the project (if applicable).
-Specify code style guidelines or testing procedures to follow.
+#### Version Control
+- **Git:** Initialize a Git repository for version control and commit the initial project setup.
 
 ## License
 This project is licensed under the MIT License - see the () file for details.
