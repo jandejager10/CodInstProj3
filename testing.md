@@ -42,58 +42,60 @@ Automated testing (optional) can be implemented for data validation and basic fu
 
 Tables figured out in markdown!!!!
 This better get a pass!!!!
-#Problem Tracker#
-##1##
+
+## Problem Tracker:
+### 1.
     - Unable to load models to the database.
     - Unable to use form from forms.py
         - turns out the files is in the wrong folder and should be like this instead:
 
-project_root/
-│
-├── app.py
-├── create_tables.py  # Script to create the tables initially
-├── models.py         # Contains your SQLAlchemy models
-├── forms.py          # Contains your WTForms forms
-├── requirements.txt  # Lists project dependencies
-├── static/
-│   ├── css/
-│   │   ├── materialize.min.css
-│   │   └── style.css
-│   └── js/
-│       └── script.js
-├── templates/
-│   ├── base.html
-│   ├── books.html
-│   ├── add_book.html
-│   ├── book_detail.html
-│   ├── edit_book.html
-│   ├── login.html
-│   └── register.html
-└── data/
-    └── data.json
+        project_root/
+        │
+        ├── app.py
+        ├── create_tables.py  # Script to create the tables initially
+        ├── models.py         # Contains the SQLAlchemy models
+        ├── forms.py          # Contains the WTForms forms
+        ├── requirements.txt  # Lists project dependencies
+        ├── static/
+        │   ├── css/
+        │   │   ├── materialize.min.css
+        │   │   └── style.css
+        │   └── js/
+        │       └── script.js
+        ├── templates/
+        │   ├── base.html
+        │   ├── books.html
+        │   ├── add_book.html
+        │   ├── book_detail.html
+        │   ├── edit_book.html
+        │   ├── login.html
+        │   └── register.html
+        └── data/
+            └── data.json
 
-##2##
-when running the python app the following errors appear in the terminal:
-"LoginForm" is not defined [Ln 97, Col 12]
-"RegistrationForm" is not defined [Ln 111, Col 12]
+### 2.
+When running the python app the following errors appear in the terminal:
+        "LoginForm" is not defined [Ln 97, Col 12]
+        "RegistrationForm" is not defined [Ln 111, Col 12]
 
 when running the python app the following errors appear as a BuildError:
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'add_book'. Did you mean 'edit_book' instead?
-File "c:\Users\jande\OneDrive\Documents\GitHub\CodInstProj3\app.py", line 31, in home
-return render_template('index.html')
+        werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'add_book'. Did you mean 'edit_book' instead?
+        File "c:\Users\jande\OneDrive\Documents\GitHub\CodInstProj3\app.py", line 31, in home
+        return render_template('index.html')
+        
+        File "c:\Users\jande\OneDrive\Documents\GitHub\CodInstProj3\templates\index.html", line 1, in top-level template code
+        {% extends "base.html" %}
+        
+        File "c:\Users\jande\OneDrive\Documents\GitHub\CodInstProj3\templates\base.html", line 34, in top-level template code
+        <li><a href="{{ url_for('add_book') }}">Add Book</a></li>
 
-File "c:\Users\jande\OneDrive\Documents\GitHub\CodInstProj3\templates\index.html", line 1, in top-level template code
-{% extends "base.html" %}
-
-File "c:\Users\jande\OneDrive\Documents\GitHub\CodInstProj3\templates\base.html", line 34, in top-level template code
-<li><a href="{{ url_for('add_book') }}">Add Book</a></li>
-
+ - **Correction**
     -   Define the route for add_book.html in the app.py file.
 
     -   Check that BookForm, ReviewForm, LoginForm, and RegistrationForm are imported from forms.py
         -   from forms import BookForm, ReviewForm, LoginForm, RegistrationForm
 
-##3##
+### 3.
 when logging in with an existing user the following error:
 Exception: Install 'email_validator' for email validation support.
 File "c:\Users\jande\OneDrive\Documents\GitHub\CodInstProj3\app.py", line 117, in login
@@ -109,10 +111,11 @@ def login():
     -   Update the registration route to handle non-mandatory email.
     -   Update the login route to authenticate using username.
 
-##4##
+### 4.
 when adding a new book, without adding the publication date an internal server error appears without adding the data to the database. sqlalchemy.exc.DataError: (psycopg2.errors.InvalidDatetimeFormat) invalid input syntax for type date:
-    -   Adding a date prevents the error
-    -   Change the 'BookForm' 
-        -   Previous: publication_date = StringField('Publication Date')
-        -   Current: publication_date = DateField('Publication Date', format='%Y-%m-%d', validators=[Optional()])
-        -   Change "class Book(db.Model)" to allow nullable date
+
+        -   Adding a date prevents the error
+        -   Change the 'BookForm' 
+            -   Previous: publication_date = StringField('Publication Date')
+            -   Current: publication_date = DateField('Publication Date', format='%Y-%m-%d', validators=[Optional()])
+            -   Change "class Book(db.Model)" to allow nullable date
