@@ -20,7 +20,7 @@ login_manager.login_view = 'login'
 
 # Import models after initializing db to avoid circular imports
 from models import User, Book, Review
-from forms import BookForm, ReviewForm, LoginForm, RegistrationForm
+# from forms import BookForm, ReviewForm, LoginForm, RegistrationForm
 
 # User loader callback function
 @login_manager.user_loader
@@ -85,8 +85,12 @@ def edit_book(book_id):
     return render_template('edit_book.html', form=form, book=book)
 
 @app.route('/book/delete/<int:book_id>', methods=['POST'])
+@login_required
 def delete_book(book_id):
     book = Book.query.get_or_404(book_id)
+    if book.user_id != current_user.id and not current_user.is_admin:
+        flash('You do not have permission to delete this book', 'danger')
+        return redirect(url_for('books'))
     db.session.delete(book)
     db.session.commit()
     flash('Book deleted successfully', 'success')
@@ -102,7 +106,8 @@ def add_book():
             genre=form.genre.data,
             publication_date=form.publication_date.data,
             isbn=form.isbn.data,
-            cover_image_url=form.cover_image_url.data
+            cover_image_url=form.cover_image_url.data,
+            user_id=current_user.id  # Set the user_id to the currently logged-in user
         )
         db.session.add(new_book)
         db.session.commit()
