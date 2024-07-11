@@ -20,7 +20,7 @@ login_manager.login_view = 'login'
 
 # Import models after initializing db to avoid circular imports
 from models import User, Book, Review
-# from forms import BookForm, ReviewForm, LoginForm, RegistrationForm
+from forms import BookForm, ReviewForm, LoginForm, RegistrationForm
 
 # User loader callback function
 @login_manager.user_loader
