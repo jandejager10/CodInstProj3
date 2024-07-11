@@ -7,9 +7,9 @@ from datetime import datetime
 
 app = Flask(__name__)
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:ESP!ngard1@localhost/codInstprojthree'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://codInstprojthree_owner:31bQsNUprvwR@ep-white-field-a2lnkspg.eu-central-1.aws.neon.tech/codInstprojthree?sslmode=require'
-app.config['SECRET_KEY'] = 'Y[S&nL(4[Un[f.&RA=o=t8SP`?BNe6'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://codInstprojthree_owner:31bQsNUprvwR@ep-white-field-a2lnkspg.eu-central-1.aws.neon.tech/codInstprojthree?sslmode=require'
+# app.config['SECRET_KEY'] = 'Y[S&nL(4[Un[f.&RA=o=t8SP`?BNe6'
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
@@ -19,13 +19,8 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
-from app import app, db
-
-with app.app_context():
-    db.create_all()
-
 # Import models after initializing db to avoid circular imports
-from models import User, Book, Review
+# from models import User, Book, Review
 # from forms import BookForm, ReviewForm, LoginForm, RegistrationForm
 
 # User loader callback function
