@@ -7,10 +7,10 @@
         <div class="col s12 m6 l4">
             <div class="card">
                 <div class="card-image">
-                    <img src="{{ book.cover_image_url }}" alt="{{ book.title }}">
-                    <span class="card-title">{{ book.title }}</span>
+                    <img src="{{ book.cover_image_url }}" alt="{{ book.cover_image_url }}">
                 </div>
                 <div class="card-content">
+                    <p><strong>Title:</strong> {{ book.title }} </p>
                     <p><strong>Author:</strong> {{ book.author }}</p>
                     <p><strong>Genre:</strong> {{ book.genre }}</p>
                 </div>
