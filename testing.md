@@ -119,3 +119,26 @@ when adding a new book, without adding the publication date an internal server e
             -   Previous: publication_date = StringField('Publication Date')
             -   Current: publication_date = DateField('Publication Date', format='%Y-%m-%d', validators=[Optional()])
             -   Change "class Book(db.Model)" to allow nullable date
+
+### 5.
+Footer color is overwridden by default materialize color 
+    ![alt text](footer_color-1.png)
+    -   The fix
+
+### 6.
+The date field text for add_book overlays the date selector and filed name
+    ![alt text](date_field.png)
+    -   The fix
+
+### 7.
+
+
+### 8.
+
+
+### 9.
+
+
+### 10.
+
+
