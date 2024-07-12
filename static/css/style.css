@@ -4,11 +4,11 @@ nav {
 }
 
 /* Custom footer style */
-footer {
-    background-color: #2D3540;
-    color: white;
-    padding: 10px 0;
-    text-align: center;
+footer.page-footer {
+    background-color: #2D3540 !important;
+    color: white !important;
+    padding: 10px 0 !important;
+    text-align: center !important;
 }
 
 /* Custom button style */
@@ -29,6 +29,10 @@ input[type=text], input[type=password], input[type=email], textarea {
     width: 100%;
 }
 
+.datepicker {
+    width: 100%;
+}
+
 /* Custom heading styles */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Hachi Maru Pop', cursive;
@@ -36,36 +40,36 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Custom card style */
 .card {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2) !important;
     transition: 0.3s;
 }
 
 .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2) !important;
 }
 
 /* Custom alert message styles */
 .alert-success {
-    background-color: #d4edda;
-    color: #155724;
-    padding: 10px;
-    margin-bottom: 20px;
+    background-color: #d4edda !important;
+    color: #155724 !important;
+    padding: 10px !important;
+    margin-bottom: 20px !important;
 }
 
 .alert-danger {
-    background-color: #f8d7da;
-    color: #721c24;
-    padding: 10px;
-    margin-bottom: 20px;
+    background-color: #f8d7da !important;
+    color: #721c24 !important;
+    padding: 10px !important;
+    margin-bottom: 20px !important;
 }
 
 /* Responsive adjustments */
 @media (max-width: 600px) {
     nav .brand-logo {
-        font-size: 1.5rem;
+        font-size: 1.5rem !important;
     }
 
     .card {
-        margin: 10px 0;
+        margin: 10px 0 !important;
     }
 }

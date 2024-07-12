@@ -121,14 +121,14 @@ when adding a new book, without adding the publication date an internal server e
             -   Change "class Book(db.Model)" to allow nullable date
 
 ### 5.
-Footer color is overwridden by default materialize color 
+Footer color is overwridden by default materialize color.
     ![alt text](footer_color-1.png)
-    -   The fix
+    -   Added !important to some styles to force them to apply over Materialize defaults.
 
 ### 6.
-The date field text for add_book overlays the date selector and filed name
+The date field text for add_book overlays the date selector and filed name.
     ![alt text](date_field.png)
-    -   The fix
+    -   fix .datepicker modal from Materialize in add_book.html and script.js
 
 ### 7.
 when logged on as a user there is no option to delete my own review. 
