@@ -4,7 +4,7 @@ from models import Book, User
 
 def load_data():
     with open('data/data.json') as f:
-        data = json.load(f)
+        data = json.load(f)  # Ensure this reads the JSON data correctly
     
     # Get the default user
     default_user = User.query.filter_by(username='default_user').first()

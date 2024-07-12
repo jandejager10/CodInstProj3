@@ -1,33 +1,18 @@
-
-{
-    "books": [
-        {
-            "title": "The Great Gatsby",
-            "author": "F. Scott Fitzgerald",
-            "genre": "Fiction",
-            "publication_date": "1925-04-10",
-            "isbn": "9780743273565",
-            "cover_image_url": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1490528560i/4671.jpg"
-        },
-        {
-            "title": "To Kill a Mockingbird",
-            "author": "Harper Lee",
-            "genre": "Fiction",
-            "publication_date": "1960-07-11",
-            "isbn": "9780061120084",
-            "cover_image_url": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1553383690i/2657.jpg"
-        }
-    ],
-    "users": [
-        {
-            "username": "user1",
-            "email": "user1@example.com",
-            "password": "password1"
-        },
-        {
-            "username": "user2",
-            "email": "user2@example.com",
-            "password": "password2"
-        }
-    ]
-}
+[
+    {
+        "title": "The Great Gatsby",
+        "author": "F. Scott Fitzgerald",
+        "genre": "Fiction",
+        "publication_date": "1925-04-10",
+        "isbn": "9780743273565",
+        "cover_image_url": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1490528560i/4671.jpg"
+    },
+    {
+        "title": "To Kill a Mockingbird",
+        "author": "Harper Lee",
+        "genre": "Fiction",
+        "publication_date": "1960-07-11",
+        "isbn": "9780061120084",
+        "cover_image_url": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1553383690i/2657.jpg"
+    }
+]
