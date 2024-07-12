@@ -86,11 +86,23 @@ def edit_book(book_id):
         return redirect(url_for('book_detail', book_id=book.id))
     return render_template('edit_book.html', form=form, book=book)
 
+@app.route('/review/delete/<int:review_id>', methods=['POST'])
+@login_required
+def delete_review(review_id):
+    review = Review.query.get_or_404(review_id)
+    if review.user_id != current_user.id and not current_user.is_admin:
+        flash('You do not have permission to delete this review', 'danger')
+        return redirect(url_for('book_detail', book_id=review.book_id))
+    db.session.delete(review)
+    db.session.commit()
+    flash('Review deleted successfully', 'success')
+    return redirect(url_for('book_detail', book_id=review.book_id))
+
 @app.route('/book/delete/<int:book_id>', methods=['POST'])
 @login_required
 def delete_book(book_id):
     book = Book.query.get_or_404(book_id)
-    if book.user_id != current_user.id and not current_user.is_admin:
+    if not current_user.is_admin:
         flash('You do not have permission to delete this book', 'danger')
         return redirect(url_for('books'))
     db.session.delete(book)

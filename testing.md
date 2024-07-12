@@ -131,7 +131,13 @@ The date field text for add_book overlays the date selector and filed name
     -   The fix
 
 ### 7.
-
+when logged on as a user there is no option to delete my own review. 
+When logged in as admin user ('code_admin') there is no option to delete any reviews or books.
+    -   Add routes to app.py
+        -   @app.route('/review/delete/<int:review_id>', methods=['POST'])
+        -   @app.route('/book/delete/<int:book_id>', methods=['POST'])
+    -   Add a delete button for reviews in book_detail.html
+    -   Delete from books.html not added, deletion from book_detail sufficient.
 
 ### 8.
 

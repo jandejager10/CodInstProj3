@@ -21,6 +21,12 @@
         </div>
         <div class="card-action">
             <span>Upvotes: {{ review.upvotes }}</span>
+            <span>by {{ review.user.username }}</span>
+            {% if review.user_id == current_user.id or current_user.is_admin %}
+                <form action="{{ url_for('delete_review', review_id=review.id) }}" method="POST" style="display:inline;">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            {% endif %}
         </div>
     </div>
     {% endfor %}
@@ -37,6 +43,11 @@
         </div>
         <button type="submit" class="btn waves-effect waves-light">Submit Review</button>
     </form>
+    {% endif %}
+    {% if current_user.is_authenticated and current_user.is_admin %}
+        <form action="{{ url_for('delete_book', book_id=book.id) }}" method="POST" style="display:inline;">
+            <button type="submit" class="btn btn-danger">Delete Book</button>
+        </form>
     {% endif %}
 </div>
 {% endblock %}
