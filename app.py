@@ -1,7 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, request, flash
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
-from flask_login import LoginManager, UserMixin, login_user, current_user, logout_user, login_required
+from extensions import db, migrate, login_manager
+from flask_login import login_user, current_user, logout_user, login_required
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 import os
@@ -15,11 +14,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('SQLALCHEMY_DATABASE_URI')
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-db = SQLAlchemy(app)
-migrate = Migrate(app, db)
-
 # Initialize Login Manager
-login_manager = LoginManager()
+db.init_app(app)
+migrate.init_app(app, db)
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
