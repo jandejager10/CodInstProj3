@@ -4,11 +4,15 @@ from flask_migrate import Migrate
 from flask_login import LoginManager, UserMixin, login_user, current_user, logout_user, login_required
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:ESP!ngard1@localhost/codInstprojthree'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://codInstprojthree_owner:31bQsNUprvwR@ep-white-field-a2lnkspg.eu-central-1.aws.neon.tech/codInstprojthree?sslmode=require'
-app.config['SECRET_KEY'] = 'Y[S&nL(4[Un[f.&RA=o=t8SP`?BNe6'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('SQLALCHEMY_DATABASE_URI')
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
