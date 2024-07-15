@@ -71,8 +71,13 @@ def book_detail(book_id):
     return render_template('book_detail.html', book=book, form=form, reviews=reviews)
 
 @app.route('/book/edit/<int:book_id>', methods=['GET', 'POST'])
+@login_required
 def edit_book(book_id):
     book = Book.query.get_or_404(book_id)
+    if book.user_id != current_user.id and not current_user.is_admin:
+        flash('You do not have permission to edit this book', 'danger')
+        return redirect(url_for('book_detail', book_id=book.id))
+    
     form = BookForm(obj=book)
     if form.validate_on_submit():
         book.title = form.title.data
@@ -84,7 +89,26 @@ def edit_book(book_id):
         db.session.commit()
         flash('Book updated successfully', 'success')
         return redirect(url_for('book_detail', book_id=book.id))
+    
     return render_template('edit_book.html', form=form, book=book)
+
+@app.route('/review/edit/<int:review_id>', methods=['GET', 'POST'])
+@login_required
+def edit_review(review_id):
+    review = Review.query.get_or_404(review_id)
+    if review.user_id != current_user.id and not current_user.is_admin:
+        flash('You do not have permission to edit this review', 'danger')
+        return redirect(url_for('book_detail', book_id=review.book_id))
+    
+    form = ReviewForm(obj=review)
+    if form.validate_on_submit():
+        review.content = form.content.data
+        db.session.commit()
+        flash('Review updated successfully', 'success')
+        return redirect(url_for('book_detail', book_id=review.book_id))
+    
+    return render_template('edit_review.html', form=form, review=review)
+
 
 @app.route('/review/delete/<int:review_id>', methods=['POST'])
 @login_required

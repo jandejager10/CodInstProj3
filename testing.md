@@ -11,22 +11,22 @@ Automated testing (optional) can be implemented for data validation and basic fu
 | ----------- | ----------- | ----------- | ----------- | ----------- |
 | TC-01	|	User can create a new book entry with valid data (title, author, cover image URL)	|	Book entry is successfully created and displayed in the list.	|	Pass |	No need to be registered |
 | TC-02	|	User cannot create a new book entry with missing required data (e.g., title)	|	Error message is displayed indicating missing information.	|	Pass |	Mandatory fields are Book name and Author |
-| TC-03	|	User can edit an existing book entry with updated details.	|	Updated book information is reflected in the list and individual book page.	|	Update |	Logic changed to only allow create and delete. Delete by admin only. |
-| TC-04	|	User cannot edit a book entry with invalid data.	|	Error message is displayed indicating invalid information.	|	Update |	Logic changed to only allow create and delete. Delete by admin only. |
-| TC-05	|	User can delete a book entry.	| Book entry is removed from the list and database.	| Update	|	Logic changed to only allow create and delete. Delete by admin only. |
+| TC-03	|	User can edit an existing book entry with updated details.	|	Updated book information is reflected in the list and individual book page.	|	Fail |	User attempting to edit crashed page |
+| TC-04	|	User cannot edit a book entry with invalid data.	|	Error message is displayed indicating invalid information.	|	Fail |	User attempting to edit crashes page |
+| TC-05	|	User can delete a book entry.	| Book entry is removed from the list and database.	| Fail	|	Not working but message displayed. Delete by admin only at moment. Might be conflicting. |
 | TC-06	|	User can write a review for an existing book.	|	Review is saved and displayed on the book's page.	|	Pass |	Registered users can write reviews. |
 | TC-07	|	User cannot submit a review with missing content.	|	Error message is displayed indicating missing information.	|	Pass |	Blank reviews cause alert message. |
-| TC-08	|	User can edit an existing review.	|	Updated review content is reflected on the book's page.	|	Update |	User allowed to delete own review. Update not implemented |
+| TC-08	|	User can edit an existing review.	|	Updated review content is reflected on the book's page.	|	Pass |	User allowed to delete own review when logged in. |
 | TC-09	|	User can upvote a review.	| Review upvote count is incremented.	| Postponed	|	Implementation delayed for next revision.	|
 
 ### 2. Data Manipulation
 | Test Case ID	| Description	| Expected Result	| Pass/Fail	| Notes |
 | ----------- | ----------- | ----------- | ----------- | ----------- |
 | TC-10	|	Database successfully stores new book entries with all relevant fields.	|	Book data is retrievable from the database.	|	Pass |	Book data stored as planned. |
-| TC-11	|	Database updates book information when an entry is edited.	|	Updated data is reflected in the database.	|	Update |	Only create and delete allowed. |
-| TC-12	|	Database deletes book entry upon user request.	|	Entry is removed from the database.	|	Pass |	Book deletes only by admin. |
+| TC-11	|	Database updates book information when an entry is edited.	|	Updated data is reflected in the database.	|	Fail |	Crashing page at moment. |
+| TC-12	|	Database deletes book entry upon user request.	|	Entry is removed from the database.	|	Pass |	Book deletes only by admin at the moment. |
 | TC-13	|	Database successfully stores user reviews for books.	|	Review data is retrievable and associated with the corresponding book.	|	Pass |	Reviews are stored. |
-| TC-14	|	Database updates review content when edited by the user.	|	Updated review content is reflected in the database.	|	Update |	Only Create and Delete allowed. |
+| TC-14	|	Database updates review content when edited by the user.	|	Updated review content is reflected in the database.	|	Fail |	Page crashed but buttons displayed. |
 | TC-15	|	Database accurately maintains review upvote count.	|	Upvote count reflects the number of users who upvoted the review.	|	Update |	Not implemented |
 
 
@@ -138,7 +138,8 @@ When logged in as admin user ('code_admin') there is no option to delete any rev
 
 ### 8.
 User is not able to 'Update' entries.
-    -   
+    -   route for edit_book fixed
+    -   new adit_review page added and linked
 
 ### 9.
 

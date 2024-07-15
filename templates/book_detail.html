@@ -11,6 +11,14 @@
             <p><strong>Genre:</strong> {{ book.genre }}</p>
             <p><strong>Publication Date:</strong> {{ book.publication_date }}</p>
             <p><strong>ISBN:</strong> {{ book.isbn }}</p>
+            {% if current_user.is_authenticated %}
+                {% if book.user_id == current_user.id or current_user.is_admin %}
+                    <a href="{{ url_for('edit_book', book_id=book.id) }}" class="btn">Edit Book</a>
+                    <form action="{{ url_for('delete_book', book_id=book.id) }}" method="POST" style="display:inline;">
+                        <button type="submit" class="btn red">Delete Book</button>
+                    </form>
+                {% endif %}
+            {% endif %}
         </div>
     </div>
     <h4>Reviews</h4>
@@ -18,14 +26,17 @@
     <div class="card">
         <div class="card-content">
             <p>{{ review.content }}</p>
+            <p>by {{ review.user.username }}</p>
         </div>
         <div class="card-action">
             <span>Upvotes: {{ review.upvotes }}</span>
-            <span>by {{ review.user.username }}</span>
-            {% if review.user_id == current_user.id or current_user.is_admin %}
-                <form action="{{ url_for('delete_review', review_id=review.id) }}" method="POST" style="display:inline;">
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
+            {% if current_user.is_authenticated %}
+                {% if review.user_id == current_user.id or current_user.is_admin %}
+                    <a href="{{ url_for('edit_review', review_id=review.id) }}" class="btn">Edit Review</a>
+                    <form action="{{ url_for('delete_review', review_id=review.id) }}" method="POST" style="display:inline;">
+                        <button type="submit" class="btn red">Delete Review</button>
+                    </form>
+                {% endif %}
             {% endif %}
         </div>
     </div>
@@ -43,11 +54,6 @@
         </div>
         <button type="submit" class="btn waves-effect waves-light">Submit Review</button>
     </form>
-    {% endif %}
-    {% if current_user.is_authenticated and current_user.is_admin %}
-        <form action="{{ url_for('delete_book', book_id=book.id) }}" method="POST" style="display:inline;">
-            <button type="submit" class="btn btn-danger">Delete Book</button>
-        </form>
     {% endif %}
 </div>
 {% endblock %}
