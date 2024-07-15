@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize the datepicker
     var elemsDatepicker = document.querySelectorAll('.datepicker');
     var instancesDatepicker = M.Datepicker.init(elemsDatepicker, {
-        format: 'yyyy-mm-dd',
+        format: 'dd-mm-yyyy',
         autoClose: true
     });
 

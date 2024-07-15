@@ -144,12 +144,14 @@ User is not able to 'Update' entries.
 ### 9.
 When adding a book, the year selection only goes back to 2014.  
     ![alt text](static/img/date_backdate.png)  
-    -   
+    -   yearRange	Number || Array	10	Number of years either side, or array of upper/lower range.
+        - .datepicker default is being used. Will NOT be updated as date can be manually changed.
 
 ### 10.
 When adding a book, if republished with multiple ISBN, the field is too small.  
     ![alt text](static/img/insert_errors1.png)  
-    -   
+    -   Models.py contains isbn = db.Column(db.String(13))
+        -   will NOT be updated for multiple ISBN usage at this stage.
 
 ### 11.  
 When editing a book, clicking the edit button causes an error.  
