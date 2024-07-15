@@ -26,6 +26,15 @@ Welcome to my "Level 5 Diploma in Web Application Development" Code Institute Ba
 ## Book Review and Recommendation Website
 This project is a book review and recommendation website built with Flask and a relational/non-relational database. Users can create, edit, and delete book entries, write and upvote reviews, and discover new books to read.
 
+## Wireframes  
+<p align="center">
+![wireframe](static/img/am-i-responsive.png)
+</p>
+
+<p align="center">
+[Visit 'Book Reviews' on Heroku](https://codeinstproj3-448813aebd4c.herokuapp.com/)
+</p>
+
 ## Project Goals
 - Develop a CRUD (Create, Read, Update, Delete) application for book data.
 - Implement user interaction for adding, editing, and reviewing books.
@@ -39,7 +48,7 @@ This project is a book review and recommendation website built with Flask and a 
 Create new book entries with details like title, author, cover image URL, and other relevant fields (genre, publication date, ISBN, etc.)
 Edit existing book entries.
 Write and edit reviews for books.
-Upvote reviews (consider implementing a downvote option too, for balanced feedback)
+Upvote reviews (Page tags left in place but not implemented for actual use)
 Delete user-created entries (books and reviews)
 ### Data Model:
 Design a database schema with tables for Books, Authors (if separate), Reviews, and Users (if implementing authentication).
@@ -66,19 +75,23 @@ Implement basic search functionality for users to easily find books.
 - Backend: Python + Flask
 - Database: PostgreSQL hosted on [neon.tech](https://console.neon.tech/)
 ### Additional libraries and external APIs:
-- WTForms where required or usefull
+- WTForms for all forms
 - Flask-Login (for user authentication)
 
 ## Project Structure (file layout)
 - **Directories and Files:**
     - `/static` for CSS, JavaScript, and images.
     - `/templates` for HTML templates.
+    - `/data` for preloaded database data (not in use for live project).
     - `app.py` for the main Flask application logic.
     - `models.py` for database model definitions.
     - `forms.py` for defining forms with WTForms.
     - `README.md` for project documentation.
     - `requirements.txt` for listing project dependencies.
     - `testing.md` for detailing the testing approach.
+    - `create_tables.py` for creating the database tables (not in use for live project).
+    - `create_default_user.py` for creating the dault user and activating tables (not in use for live project).
+    - `populate_user_id.py` for loading test users (not in use for live project).
 
 
 #### Database Models
@@ -110,11 +123,13 @@ Implement basic search functionality for users to easily find books.
     - `add_book.html`: Form for adding new books.
     - `book_detail.html`: Display individual book details and reviews.
     - `edit_book.html`: Form for editing books.
+    - `edit_review.html`: Form for editing reviews.
     - `login.html`: User login form.
     - `register.html`: User registration form.
+    - `index.html`: The Index page.
 
 #### Front-End Styling
-- **CSS Frameworks:** Use Bootstrap and Materialize for styling the web application. (might change at later stage)
+- **CSS Frameworks:** Use Materialize for styling the web application. 
 
 #### Testing
 - **Manual Testing:** See testing.md for interaction and overall user experience tests.
@@ -124,7 +139,7 @@ Implement basic search functionality for users to easily find books.
     - `Procfile` for Heroku.
     - Update `requirements.txt` with project dependencies.
     - Deploy the application to Heroku and configure the database.
-        Database currently local for development but will be deployed either on neon.tech or code institute platform https://dbs.ci-dbs.net/
+        Database currently local for development but deployed on neon.tech for use by Heroku.  
 
 ### Fields Used
 
@@ -153,13 +168,11 @@ Implement basic search functionality for users to easily find books.
 - `user_id`: ID of the user who wrote the review.
 - `book_id`: ID of the book being reviewed.
 
-
-
 ## Attribution
 - https://www.markdownguide.org/cheat-sheet/
-- Adobe, for the color wheel. #2D3540 #0B8C38 #20733D #5DBF4E #F2F2F2
-- Pictures https://www.shutterstock.com/
-- Favicon - https://www.shutterstock.com/
+- 
+- Pictures https://images-na.ssl-images-amazon.com/
+- Favicon - https://kit.fontawesome.com
 - Fonts - https://fonts.googleapis.com/
 - Stylesheets and icons - https://kit.fontawesome.com
 - Code usage lookups - https://www.w3schools.com/
@@ -167,12 +180,12 @@ Implement basic search functionality for users to easily find books.
 - Database layout/modeling - https://stackoverflow.com/questions/21159333/database-schema-for-books-authors-publishers-and-users-with-bookshelves
 - Login layout - https://www.goodreads.com/
 - Review layout ideas - https://www.goodreads.com/
-- Book search API - https://www.goodreads.com/api
+- Book search API - 
 - Code for login - https://werkzeug.palletsprojects.com/en/3.0.x/
 - Code for login - https://pypi.org/project/Flask-Login/
 ### Media (images and animations)
     All them pictures have got to come from somewhere afterall:
-- Pictures / Photos from https://stock.adobe.com/
+- Pictures - 
 - Favicon - https://icons8.com/
 
 #### Version Control
