@@ -1,34 +1,40 @@
-@app.route('/book/edit/<int:book_id>', methods=['GET', 'POST'])
-@login_required
-def edit_book(book_id):
-    book = Book.query.get_or_404(book_id)
-    if book.user_id != current_user.id and not current_user.is_admin:
-        flash('You do not have permission to edit this book', 'danger')
-        return redirect(url_for('book_detail', book_id=book.id))
-    form = BookForm(obj=book)
-    if form.validate_on_submit():
-        book.title = form.title.data
-        book.author = form.author.data
-        book.genre = form.genre.data
-        book.publication_date = form.publication_date.data
-        book.isbn = form.isbn.data
-        book.cover_image_url = form.cover_image_url.data
-        db.session.commit()
-        flash('Book updated successfully', 'success')
-        return redirect(url_for('book_detail', book_id=book.id))
-    return render_template('edit_book.html', form=form, book=book)
-
-@app.route('/review/edit/<int:review_id>', methods=['GET', 'POST'])
-@login_required
-def edit_review(review_id):
-    review = Review.query.get_or_404(review_id)
-    if review.user_id != current_user.id and not current_user.is_admin:
-        flash('You do not have permission to edit this review', 'danger')
-        return redirect(url_for('book_detail', book_id=review.book_id))
-    form = ReviewForm(obj=review)
-    if form.validate_on_submit():
-        review.content = form.content.data
-        db.session.commit()
-        flash('Review updated successfully', 'success')
-        return redirect(url_for('book_detail', book_id=review.book_id))
-    return render_template('edit_review.html', form=form, review=review)
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h2 class="center-align">Edit Book</h2>
+    <form method="POST" action="{{ url_for('edit_book', book_id=book.id) }}">
+        {{ form.hidden_tag() }}
+        <div class="input-field">
+            {{ form.title.label }}
+            {{ form.title(class="validate") }}
+            {% for error in form.title.errors %}
+                <span class="helper-text red-text">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div class="input-field">
+            {{ form.author.label }}
+            {{ form.author(class="validate") }}
+            {% for error in form.author.errors %}
+                <span class="helper-text red-text">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div class="input-field">
+            {{ form.genre.label }}
+            {{ form.genre(class="validate") }}
+        </div>
+        <div class="input-field">
+            {{ form.publication_date.label }}
+            {{ form.publication_date(class="datepicker") }}
+        </div>
+        <div class="input-field">
+            {{ form.isbn.label }}
+            {{ form.isbn(class="validate") }}
+        </div>
+        <div class="input-field">
+            {{ form.cover_image_url.label }}
+            {{ form.cover_image_url(class="validate") }}
+        </div>
+        <button type="submit" class="btn waves-effect waves-light">Update Book</button>
+    </form>
+</div>
+{% endblock %}

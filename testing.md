@@ -118,32 +118,42 @@ when adding a new book, without adding the publication date an internal server e
             -   Change "class Book(db.Model)" to allow nullable date
 
 ### 5.
-Footer color is overwridden by default materialize color.
-    ![alt text](footer_color-1.png)
-    -   Added !important to some styles to force them to apply over Materialize defaults.
+Footer color is overwridden by default materialize color.  
+    ![alt text](static/img/footer_color.png)  
+    -   Added !important to some styles to force them to apply over Materialize defaults.  
 
 ### 6.
-The date field text for add_book overlays the date selector and filed name.
-    ![alt text](date_field.png)
-    -   fix .datepicker modal from Materialize in add_book.html and script.js
+The date field text for add_book overlays the date selector and filed name.  
+    ![alt text](static/img/date_field.png)  
+    -   fix .datepicker modal from Materialize in add_book.html and script.js  
 
 ### 7.
-when logged on as a user there is no option to delete my own review. 
-When logged in as admin user ('code_admin') there is no option to delete any reviews or books.
-    -   Add routes to app.py
-        -   @app.route('/review/delete/<int:review_id>', methods=['POST'])
-        -   @app.route('/book/delete/<int:book_id>', methods=['POST'])
-    -   Add a delete button for reviews in book_detail.html
-    -   Delete from books.html not added, deletion from book_detail sufficient.
+when logged on as a user there is no option to delete my own review.  
+When logged in as admin user ('code_admin') there is no option to delete any reviews or books.  
+    -   Add routes to app.py  
+        -   @app.route('/review/delete/<int:review_id>', methods=['POST'])  
+        -   @app.route('/book/delete/<int:book_id>', methods=['POST'])  
+    -   Add a delete button for reviews in book_detail.html  
+    -   Delete from books.html not added, deletion from book_detail sufficient.  
 
 ### 8.
-User is not able to 'Update' entries.
-    -   route for edit_book fixed
-    -   new adit_review page added and linked
+User is not able to 'Update' entries.  
+    -   route for edit_book fixed  
+    -   new edit_review page added and linked  
 
 ### 9.
-
+When adding a book, the year selection only goes back to 2014.  
+    ![alt text](static/img/date_backdate.png)  
+    -   
 
 ### 10.
+When adding a book, if republished with multiple ISBN, the field is too small.  
+    ![alt text](static/img/insert_errors1.png)  
+    -   
 
+### 11.  
+When editing a book, clicking the edit button causes an error.  
+    ![alt text](static/img/book_edit1.png)  
+    -   Restore edit_book.html from backup and update.  
 
+### 12.  

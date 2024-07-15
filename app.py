@@ -77,7 +77,7 @@ def edit_book(book_id):
     if book.user_id != current_user.id and not current_user.is_admin:
         flash('You do not have permission to edit this book', 'danger')
         return redirect(url_for('book_detail', book_id=book.id))
-    
+
     form = BookForm(obj=book)
     if form.validate_on_submit():
         book.title = form.title.data
