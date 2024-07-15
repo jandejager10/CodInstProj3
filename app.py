@@ -24,15 +24,18 @@ login_manager.login_view = 'login'
 from models import User, Book, Review
 from forms import BookForm, ReviewForm, LoginForm, RegistrationForm
 
+
 # User loader callback function
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
 
+
 # Routes
 @app.route('/')
 def home():
     return render_template('index.html')
+
 
 @app.route('/books', methods=['GET', 'POST'])
 def books():
@@ -53,6 +56,7 @@ def books():
     books = Book.query.all()
     return render_template('books.html', form=form, books=books)
 
+
 @app.route('/book/<int:book_id>', methods=['GET', 'POST'])
 def book_detail(book_id):
     book = Book.query.get_or_404(book_id)
@@ -68,7 +72,9 @@ def book_detail(book_id):
         flash('Review added successfully', 'success')
         return redirect(url_for('book_detail', book_id=book.id))
     reviews = Review.query.filter_by(book_id=book.id).all()
-    return render_template('book_detail.html', book=book, form=form, reviews=reviews)
+    return render_template('book_detail.html',
+                           book=book, form=form, reviews=reviews)
+
 
 @app.route('/book/edit/<int:book_id>', methods=['GET', 'POST'])
 @login_required
@@ -89,8 +95,9 @@ def edit_book(book_id):
         db.session.commit()
         flash('Book updated successfully', 'success')
         return redirect(url_for('book_detail', book_id=book.id))
-    
+
     return render_template('edit_book.html', form=form, book=book)
+
 
 @app.route('/review/edit/<int:review_id>', methods=['GET', 'POST'])
 @login_required
@@ -99,14 +106,14 @@ def edit_review(review_id):
     if review.user_id != current_user.id and not current_user.is_admin:
         flash('You do not have permission to edit this review', 'danger')
         return redirect(url_for('book_detail', book_id=review.book_id))
-    
+
     form = ReviewForm(obj=review)
     if form.validate_on_submit():
         review.content = form.content.data
         db.session.commit()
         flash('Review updated successfully', 'success')
         return redirect(url_for('book_detail', book_id=review.book_id))
-    
+
     return render_template('edit_review.html', form=form, review=review)
 
 
@@ -122,6 +129,7 @@ def delete_review(review_id):
     flash('Review deleted successfully', 'success')
     return redirect(url_for('book_detail', book_id=review.book_id))
 
+
 @app.route('/book/delete/<int:book_id>', methods=['POST'])
 @login_required
 def delete_book(book_id):
@@ -133,6 +141,7 @@ def delete_book(book_id):
     db.session.commit()
     flash('Book deleted successfully', 'success')
     return redirect(url_for('books'))
+
 
 @app.route('/add_book', methods=['GET', 'POST'])
 def add_book():
@@ -153,6 +162,7 @@ def add_book():
         return redirect(url_for('books'))
     return render_template('add_book.html', form=form)
 
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
@@ -166,6 +176,7 @@ def login():
         else:
             flash('Login Unsuccessful. Please check username and password', 'danger')
     return render_template('login.html', form=form)
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -181,11 +192,13 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', form=form)
 
+
 @app.route('/logout')
 @login_required
 def logout():
     logout_user()
     return redirect(url_for('home'))
+
 
 if __name__ == '__main__':
     app.run(debug=True)

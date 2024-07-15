@@ -90,7 +90,7 @@ Implement basic search functionality for users to easily find books.
     - `requirements.txt` for listing project dependencies.
     - `testing.md` for detailing the testing approach.
     - `create_tables.py` for creating the database tables (not in use for live project).
-    - `create_default_user.py` for creating the dault user and activating tables (not in use for live project).
+    - `create_default_user.py` for creating the default user and activating tables (not in use for live project).
     - `populate_user_id.py` for loading test users (not in use for live project).
 
 

@@ -13,12 +13,12 @@ footer.page-footer {
 
 /* Custom button style */
 .btn-custom {
-    background-color: #5DBF4E;
-    color: white;
+    background-color: #5DBF4E !important;
+    color: white !important;
 }
 
 .btn-custom:hover {
-    background-color: #20733D;
+    background-color: #20733D !important;
 }
 
 /* Custom form input style */

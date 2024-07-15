@@ -159,3 +159,53 @@ When editing a book, clicking the edit button causes an error.
     -   Restore edit_book.html from backup and update.  
 
 ### 12.  
+
+
+## Code Validation
+
+### Python
+
+Python file `app.py` was validated using the [Code Institute Python Linter](https://pep8ci.herokuapp.com/).
+
+<p align="center">
+![Results of Python Validation](static/img/python_linter_initial.png)  
+<em>Figure: Pre-correction CI Python Linter Result</em>
+</p>
+
+<p align="center">
+![Results of Python Validation](static/img/python_linter_initial.png)  
+<em>Figure: Corrected CI Python Linter Result</em>
+</p>
+
+### JavaScript
+
+JavaScript file `script.js` was validated using [JSHint v2.13](https://jshint.com/).  
+
+<p align="center">
+  ![Results of JavaScript validation](static/img/JS_validation.png)  
+<em>Figure: JavaScript Validation Result</em>
+</p>
+
+JSHint highlighted some undefined variables and unused functions. These were due to them being used/accessed from within the HTML pages rather than within the script itself. There were no other issues.
+
+
+### CSS Validation
+
+The [W3C Jigsaw Validation Service](https://jigsaw.w3.org/css-validator/#validate_by_input) was used to check project CSS (using the 'direct input' option).
+
+<p align="center">
+  ![Results of CSS validation](static/img/CSS_validation.png)  
+<em>Figure: CSS Validation Result</em>
+</p>
+
+No errors were raised. 
+8 warnings were flagged relating to reference to vendor toolkits, which had been included in addition to non-vendor specific code to support broader access. These are therefore of no concern.
+
+
+- - -
+
+## Lighthouse Testing
+The [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) tool in Google Chrome was used to test site performance, accessibility and best practice.
+
+| *PAGE* | *RESULT* | *REPORT* |
+| :--- | :---: | :---: |
