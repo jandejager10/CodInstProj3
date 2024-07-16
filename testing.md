@@ -165,15 +165,15 @@ When editing a book, clicking the edit button causes an error.
 
 ### Python
 
-Python file `app.py` was validated using the [Code Institute Python Linter](https://pep8ci.herokuapp.com/).
+Python file `app.py` was validated using the [Code Institute Python Linter](https://pep8ci.herokuapp.com/).  
 
 <p align="center">
-![Results of Python Validation](static/img/python_linter_initial.png)  
+    ![Results of Python Validation](static/img/python_linter_initial.png)  
 <em>Figure: Pre-correction CI Python Linter Result</em>
 </p>
 
 <p align="center">
-![Results of Python Validation](static/img/python_linter_initial.png)  
+    ![Results of Python Validation](static/img/python_linter_initial.png)  
 <em>Figure: Corrected CI Python Linter Result</em>
 </p>
 
@@ -186,7 +186,7 @@ JavaScript file `script.js` was validated using [JSHint v2.13](https://jshint.co
 <em>Figure: JavaScript Validation Result</em>
 </p>
 
-JSHint highlighted some undefined variables and unused functions. These were due to them being used/accessed from within the HTML pages rather than within the script itself. There were no other issues.
+JSHint 
 
 
 ### CSS Validation
@@ -199,7 +199,6 @@ The [W3C Jigsaw Validation Service](https://jigsaw.w3.org/css-validator/#validat
 </p>
 
 No errors were raised. 
-8 warnings were flagged relating to reference to vendor toolkits, which had been included in addition to non-vendor specific code to support broader access. These are therefore of no concern.
 
 
 - - -
