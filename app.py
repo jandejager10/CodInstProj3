@@ -154,7 +154,7 @@ def add_book():
             publication_date=form.publication_date.data,
             isbn=form.isbn.data,
             cover_image_url=form.cover_image_url.data,
-            user_id=current_user.id  # Set the user_id to current logged-in user
+            user_id=current_user.id  # Set user_id to current logged-in user
         )
         db.session.add(new_book)
         db.session.commit()
@@ -188,7 +188,7 @@ def register():
         new_user = User(username=form.username.data, email=form.email.data, password=hashed_password)
         db.session.add(new_user)
         db.session.commit()
-        flash('Your account has been created! You are now able to log in', 'success')
+        flash('Account created! You are now able to log in', 'success')
         return redirect(url_for('login'))
     return render_template('register.html', form=form)
 
