@@ -154,7 +154,7 @@ def add_book():
             publication_date=form.publication_date.data,
             isbn=form.isbn.data,
             cover_image_url=form.cover_image_url.data,
-            user_id=current_user.id  # Set the user_id to the currently logged-in user
+            user_id=current_user.id  # Set the user_id to current logged-in user
         )
         db.session.add(new_book)
         db.session.commit()
@@ -174,7 +174,7 @@ def login():
             login_user(user, remember=form.remember.data)
             return redirect(url_for('home'))
         else:
-            flash('Login Unsuccessful. Please check username and password', 'danger')
+            flash('Login Unsuccessful. Check username and password', 'danger')
     return render_template('login.html', form=form)
 
 
@@ -202,3 +202,4 @@ def logout():
 
 if __name__ == '__main__':
     app.run(debug=True)
+    
