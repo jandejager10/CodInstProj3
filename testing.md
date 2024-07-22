@@ -161,49 +161,30 @@ When editing a book, clicking the edit button causes an error.
 ### 12.  
 No confirmation on deletion.  
     -   Modal implemented to fonfirm on deletion.
-        -   Users can delete books they added. Admin can delete all books.
+        -   Users can delete books they added. Admin can delete all books.  
 
 ## Code Validation
 
 ### Python
-
 Python file `app.py` was validated using the [Code Institute Python Linter](https://pep8ci.herokuapp.com/).  
-
+![Results of Python Validation](static/img/python_linter_initial.png)  
 <p align="center">
-    ![Results of Python Validation](static/img/python_linter_initial.png)  
 <em>Figure: Pre-correction CI Python Linter Result</em>
 </p>
 
+![Results of Python Validation](static/img/python_linter_initial.png)  
 <p align="center">
-    ![Results of Python Validation](static/img/python_linter_initial.png)  
 <em>Figure: Corrected CI Python Linter Result</em>
 </p>
 
 ### JavaScript
-
 JavaScript file `script.js` was validated using [JSHint v2.13](https://jshint.com/).  
-
+![Results of JavaScript validation](static/img/JS_validation.png)
 <p align="center">
-  ![Results of JavaScript validation](static/img/JS_validation.png)  
 <em>Figure: JavaScript Validation Result</em>
 </p>
 
-JSHint 
 
-
-### CSS Validation
-
-The [W3C Jigsaw Validation Service](https://jigsaw.w3.org/css-validator/#validate_by_input) was used to check project CSS (using the 'direct input' option).
-
-<p align="center">
-  ![Results of CSS validation](static/img/CSS_validation.png)  
-<em>Figure: CSS Validation Result</em>
-</p>
-
-No errors were raised. 
-
-
-- - -
 
 ## Lighthouse Testing
 The [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) tool in Google Chrome was used to test site performance, accessibility and best practice.
