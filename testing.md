@@ -27,7 +27,7 @@ Automated testing (optional) can be implemented for data validation and basic fu
 | TC-12	|	Database deletes book entry upon user request.	|	Entry is removed from the database.	|	Pass |	Book deletes only by admin at the moment. |
 | TC-13	|	Database successfully stores user reviews for books.	|	Review data is retrievable and associated with the corresponding book.	|	Pass |	Reviews are stored. |
 | TC-14	|	Database updates review content when edited by the user.	|	Updated review content is reflected in the database.	|	Pass |	This is now fixed after restoring page from Github. |
-| TC-15	|	Database accurately maintains review upvote count.	|	Upvote count reflects the number of users who upvoted the review.	|	Update |	Not implemented |
+| TC-15	|	Database accurately maintains review upvote count.	|	Upvote count reflects the number of users who upvoted the review.	|	Postponed |	Not implemented |
 
 
 ### 3. User Interface
@@ -144,14 +144,15 @@ User is not able to 'Update' entries.
 ### 9.
 When adding a book, the year selection only goes back to 2014.  
     ![alt text](static/img/date_backdate.png)  
-    -   yearRange	Number || Array	10	Number of years either side, or array of upper/lower range.
-        - .datepicker default is being used. Will NOT be updated as date can be manually changed.
+    -   yearRange	Number || Array	10	Number of years either side, or array of upper/lower range.  
+        - .datepicker default is being used. Will NOT be updated as date can be manually changed.  
 
 ### 10.
 When adding a book, if republished with multiple ISBN, the field is too small.  
     ![alt text](static/img/insert_errors1.png)  
     -   Models.py contains isbn = db.Column(db.String(13))
-        -   will NOT be updated for multiple ISBN usage at this stage.
+        -   will NOT be updated for multiple ISBN usage at this stage.  
+            -   This is now updated to 50 characters.  
 
 ### 11.  
 When editing a book, clicking the edit button causes an error.  
@@ -160,8 +161,15 @@ When editing a book, clicking the edit button causes an error.
 
 ### 12.  
 No confirmation on deletion.  
-    -   Modal implemented to fonfirm on deletion.
+    -   Modal implemented to fonfirm on deletion.  
         -   Users can delete books they added. Admin can delete all books.  
+
+### 13.  
+When deleting a book with an associated reviews the following error appears.  
+    ![alt text](static/img/book_del_error.png)  
+    -   the foreign key constraint on the 'review' table prevents the 'book_id' column from being set to NULL.  
+        -   Update model.py with 'cascade="all, delete-orphan"'.  
+        -   Update database by pushing model update.  
 
 ## Code Validation
 

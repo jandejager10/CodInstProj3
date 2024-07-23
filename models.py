@@ -17,10 +17,10 @@ class Book(db.Model):
     author = db.Column(db.String(150), nullable=False)
     genre = db.Column(db.String(100))
     publication_date = db.Column(db.Date, nullable=True)
-    isbn = db.Column(db.String(13))
+    isbn = db.Column(db.String(50))
     cover_image_url = db.Column(db.String(255))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    reviews = db.relationship('Review', backref='book', lazy=True)
+    reviews = db.relationship('Review', backref='book', lazy=True, cascade="all, delete-orphan")
 
 class Review(db.Model):
     id = db.Column(db.Integer, primary_key=True)
