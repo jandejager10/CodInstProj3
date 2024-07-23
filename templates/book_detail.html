@@ -15,7 +15,7 @@
                 {% if book.user_id == current_user.id or current_user.is_admin %}
                     <a href="{{ url_for('edit_book', book_id=book.id) }}" class="btn">Edit Book</a>
                     <form action="{{ url_for('delete_book', book_id=book.id) }}" method="POST" style="display:inline;">
-                        <button type="submit" class="btn red delete-btn">Delete Book</button>
+                        <button type="submit" class="btn btn-red delete-btn">Delete Book</button>
                     </form>
                 {% endif %}
             {% endif %}
@@ -34,7 +34,7 @@
                 {% if review.user_id == current_user.id or current_user.is_admin %}
                     <a href="{{ url_for('edit_review', review_id=review.id) }}" class="btn">Edit Review</a>
                     <form action="{{ url_for('delete_review', review_id=review.id) }}" method="POST" style="display:inline;">
-                        <button type="submit" class="btn red delete-btn">Delete Review</button>
+                        <button type="submit" class="btn btn-red delete-btn">Delete Review</button>
                     </form>
                 {% endif %}
             {% endif %}

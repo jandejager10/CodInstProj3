@@ -169,8 +169,8 @@ Implement basic search functionality for users to easily find books.
 - `book_id`: ID of the book being reviewed.
 
 ## Attribution
-- https://www.markdownguide.org/cheat-sheet/
-- 
+- Markdown - https://www.markdownguide.org/cheat-sheet/
+- Color Palette - https://coolors.co/
 - Pictures https://images-na.ssl-images-amazon.com/
 - Favicon - https://kit.fontawesome.com
 - Fonts - https://fonts.googleapis.com/
