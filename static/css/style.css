@@ -87,3 +87,13 @@ h1, h2, h3, h4, h5, h6 {
         margin: 10px 0 !important;
     }
 }
+
+/* Style for remember me checkbox */
+.input-field label {
+    display: flex;
+    align-items: center;
+}
+
+.input-field label .form-control {
+    margin-right: 10px;
+}

@@ -13,11 +13,13 @@
             {{ form.password(class="form-control") }}
         </div>
         <div class="input-field">
-            {{ form.remember.label }}
-            {{ form.remember() }}
+            <label>
+                {{ form.remember() }}
+                {{ form.remember.label }}
+            </label>
         </div>
         <div class="input-field">
-            {{ form.submit(class="btn btn-primary") }}
+            {{ form.submit(class="btn waves-effect waves-light") }}
         </div>
     </form>
 </div>
