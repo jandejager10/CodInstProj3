@@ -9,14 +9,14 @@ Automated testing (optional) can be implemented for data validation and basic fu
 ### 1. User Functionality
 | Test Case ID	| Description	| Expected Result	| Pass/Fail	| Notes |
 | ----------- | ----------- | ----------- | ----------- | ----------- |
-| TC-01	|	User can create a new book entry with valid data (title, author, cover image URL)	|	Book entry is successfully created and displayed in the list.	|	Pass |	No need to be registered |
+| TC-01	|	User can create a new book entry with valid data (title, author, cover image URL)	|	Book entry is successfully created and displayed in the list.	|	Pass |	Login required |
 | TC-02	|	User cannot create a new book entry with missing required data (e.g., title)	|	Error message is displayed indicating missing information.	|	Pass |	Mandatory fields are Book name and Author |
-| TC-03	|	User can edit an existing book entry with updated details.	|	Updated book information is reflected in the list and individual book page.	|	Pass |	This is now fixed after restoring page from Github. |
-| TC-04	|	User cannot edit a book entry with invalid data.	|	Error message is displayed indicating invalid information.	|	Fail |	User attempting to edit crashes page |
-| TC-05	|	User can delete a book entry.	| Book entry is removed from the list and database.	| Pass	|	After confirming with facilitator, modal implemented for confirmation on delete. Users can only delete books they added. |
-| TC-06	|	User can write a review for an existing book.	|	Review is saved and displayed on the book's page.	|	Pass |	Registered users can write reviews. |
+| TC-03	|	User can edit an existing book entry with updated details.	|	Updated book information is reflected in the list and individual book page.	|	Pass |	This is now fixed after restoring page from Github. User can only edit book they added. |
+| TC-04	|	User cannot edit a book entry with invalid data.	|	Error message is displayed indicating invalid information.	|	Fail |	There is no validation implemented for manadatory fields |
+| TC-05	|	User can delete a book entry.	| Book entry is removed from the list and database.	| Pass	|	After confirming with facilitator, modal implemented for confirmation on delete. Only administrator can delete books. |
+| TC-06	|	User can write a review for an existing book.	|	Review is saved and displayed on the book's page.	|	Pass |	Logged on users can write reviews. |
 | TC-07	|	User cannot submit a review with missing content.	|	Error message is displayed indicating missing information.	|	Pass |	Blank reviews cause alert message. |
-| TC-08	|	User can edit an existing review.	|	Updated review content is reflected on the book's page.	|	Pass |	User allowed to delete own review when logged in. |
+| TC-08	|	User can edit an existing review.	|	Updated review content is reflected on the book's page.	|	Pass |	User allowed to delete or edit own review when logged in. |
 | TC-09	|	User can upvote a review.	| Review upvote count is incremented.	| Postponed	|	Implementation delayed for next revision.	|
 
 ### 2. Data Manipulation
@@ -34,7 +34,7 @@ Automated testing (optional) can be implemented for data validation and basic fu
 | Test Case ID	| Description	| Expected Result	| Pass/Fail	| Notes |
 | ----------- | ----------- | ----------- | ----------- | ----------- |
 | TC-16	|	Website displays a clear layout with navigation menu for easy access to different functionalities.	|	Navigation menu allows users to browse books, add new entries, write reviews, etc.	|	Pass |	Navigation working as planned |	
-| TC-17	|	User can search for books by title (and potentially other criteria).	|	Search results display books matching the search terms.	| Update	|	Search not implemented, browse only.	|
+| TC-17	|	User can search for books by title (and potentially other criteria).	|	Search results display books matching the search terms.	| Postponed	|	Search not implemented, browse only.	|
 | TC-18	|	Individual book pages display relevant information (title, author, cover image, reviews).	|	Book details are presented clearly and visually appealing.	|	Pass |	Book display as planned. |
 | TC-19	|	User input forms (add book, write review) are clear and easy to use.	|	Input fields are labeled appropriately, and validation messages guide the user.	|	Pass |	Fields are clear and messages are clear. |		
 | TC-20	|	Website is responsive and displays well on different screen sizes (desktop, mobile).	|	Layout adapts to different screen resolutions for optimal user experience.	| Pass	|		Materialize used throughout and working.	|
@@ -161,7 +161,7 @@ When editing a book, clicking the edit button causes an error.
 
 ### 12.  
 No confirmation on deletion.  
-    -   Modal implemented to fonfirm on deletion.  
+    -   Modal implemented to confirm on deletion.  
         -   Users can delete books they added. Admin can delete all books.  
 
 ### 13.  
@@ -170,6 +170,14 @@ When deleting a book with an associated reviews the following error appears.
     -   the foreign key constraint on the 'review' table prevents the 'book_id' column from being set to NULL.  
         -   Update model.py with 'cascade="all, delete-orphan"'.  
         -   Update database by pushing model update.  
+
+### 14.  
+Security problem where similar usersnames are allowed as long as at least a single character is different.
+    ![alt text](static/img/duplicate_users.png)
+    -   Not corrected at this stage. Accepted security risk.  
+
+### 15. 
+
 
 ## Code Validation
 
@@ -180,9 +188,10 @@ Python file `app.py` was validated using the [Code Institute Python Linter](http
 <em>Figure: Pre-correction CI Python Linter Result</em>
 </p>
 
-![Results of Python Validation](static/img/python_linter_initial.png)  
+![Results of Python Validation](static/img/python_linter_corrected.png)  
 <p align="center">
 <em>Figure: Corrected CI Python Linter Result</em>
+Import models after initializing db to avoid circular imports
 </p>
 
 ### JavaScript
@@ -190,12 +199,26 @@ JavaScript file `script.js` was validated using [JSHint v2.13](https://jshint.co
 ![Results of JavaScript validation](static/img/JS_validation.png)
 <p align="center">
 <em>Figure: JavaScript Validation Result</em>
+No errors highlighted. 
 </p>
 
-
+### W3C CSS Validation  
+CSS validated using [W3C Jigsaw Validation Service](https://jigsaw.w3.org/css-validator/#validate_by_input).  
+![Results of W3C Validation](static/img/w3c_validation.png)   
+<p align="center>
+<em>Figure: CSS Validation Result<em>
+</p> 
 
 ## Lighthouse Testing
 The [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) tool in Google Chrome was used to test site performance, accessibility and best practice.
 
-| *PAGE* | *RESULT* | *REPORT* |
-| :--- | :---: | :---: |
+| *PAGE* | *RESULT* |
+| :---: | :---: |
+| Home Page | :---: |
+| :--- | :---: |
+| :--- | :---: |
+| :--- | :---: |
+| :--- | :---: |
+| :--- | :---: |
+| :--- | :---: |
+| :--- | :---: |

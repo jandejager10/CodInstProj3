@@ -27,9 +27,7 @@ Welcome to my "Level 5 Diploma in Web Application Development" Code Institute Ba
 This project is a book review and recommendation website built with Flask and a relational/non-relational database. Users can create, edit, and delete book entries, write and upvote reviews, and discover new books to read.
 
 ## Wireframes  
-<p align="center">
 ![wireframe](static/img/am-i-responsive.png)
-</p>
 
 <p align="center">
 [Visit 'Book Reviews' on Heroku](https://codeinstproj3-448813aebd4c.herokuapp.com/)

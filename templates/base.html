@@ -30,7 +30,7 @@
     <nav>
         <div class="nav-wrapper">
             <a href="{{ url_for('home') }}" class="brand-logo">Book Review</a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger" aria-label="sidenav"><i class="fas fa-bars"></i></a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="{{ url_for('books') }}">Books <i class="fa-solid fa-book-open-reader"></i></a></li>
                 <li><a href="{{ url_for('add_book') }}">Add Book <i class="fa-solid fa-book"></i></a></li>
@@ -45,13 +45,13 @@
     </nav>
 
     <ul class="sidenav" id="mobile-demo">
-        <li><a href="{{ url_for('books') }}">Books <i class="fa-solid fa-book-open-reader"></i></a></li>
-        <li><a href="{{ url_for('add_book') }}">Add Book <i class="fa-solid fa-book"></i></a></li>
+        <li><a href="{{ url_for('books') }}" aria-label="books">Books <i class="fa-solid fa-book-open-reader"></i></a></li>
+        <li><a href="{{ url_for('add_book') }}" aria-label="add book">Add Book <i class="fa-solid fa-book"></i></a></li>
         {% if current_user.is_authenticated %}
-            <li><a href="{{ url_for('logout') }}">Logout <i class="fa-solid fa-right-from-bracket"></i></a></li>
+            <li><a href="{{ url_for('logout') }}" aria-label="logout">Logout <i class="fa-solid fa-right-from-bracket"></i></a></li>
         {% else %}
-            <li><a href="{{ url_for('login') }}">Login <i class="fa-solid fa-right-to-bracket"></i></a></li>
-            <li><a href="{{ url_for('register') }}">Register <i class="fa-solid fa-pen-to-square"></i></a></li>
+            <li><a href="{{ url_for('login') }}" aria-label="login">Login <i class="fa-solid fa-right-to-bracket"></i></a></li>
+            <li><a href="{{ url_for('register') }}" aria-label="register">Register <i class="fa-solid fa-pen-to-square"></i></a></li>
         {% endif %}
     </ul>
 
