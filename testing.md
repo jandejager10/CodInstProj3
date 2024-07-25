@@ -214,11 +214,8 @@ The [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) tool in
 
 | *PAGE* | *RESULT* |
 | :---: | :---: |
-| Home Page | :---: |
-| :--- | :---: |
-| :--- | :---: |
-| :--- | :---: |
-| :--- | :---: |
-| :--- | :---: |
-| :--- | :---: |
-| :--- | :---: |
+| Home Page | ![Home](static/img/lighthouse_home.png) |
+| Books | ![Books](static/img/lighthouse_books.png) |
+| Add Book | ![Add Book](static/img/lighthouse_add-book.png) |
+| Login | ![Login](static/img/lighthouse_login.png) |
+| Register | ![Register](static/img/lighthouse_register.png) |
